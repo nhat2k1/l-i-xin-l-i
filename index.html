@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Món Quà Nhỏ Cho Kim Hà</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght=500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(135deg, #ffe5ec 0%, #ffb3c6 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Hiệu ứng bong bóng trái tim bay ngẫu nhiên */
+      .heart-particle {
+        position: absolute;
+        color: #ff4d6d;
+        pointer-events: none;
+        animation: flyUp 6s linear infinite;
+        opacity: 0.7;
+      }
+      @keyframes flyUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg) scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg) scale(1.5);
+          opacity: 0;
+        }
+      }
+
+      /* Hộp quà chính */
+      .card-container {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 40px 30px;
+        border-radius: 25px;
+        box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+        text-align: center;
+        max-width: 450px;
+        width: 90%;
+        z-index: 10;
+        border: 2px solid #fff;
+        transition: all 0.5s ease;
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.5rem;
+        color: #ff4d6d;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+      }
+
+      /* Nút bấm mở quà */
+      .gift-box-btn {
+        background: none;
+        border: none;
+        font-size: 80px;
+        cursor: pointer;
+        color: #ff4d6d;
+        transition: transform 0.3s ease;
+        animation: pulse 1.5s infinite;
+        outline: none;
+      }
+      .gift-box-btn:hover {
+        transform: scale(1.15);
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Nội dung ẩn bên trong lá thư */
+      .secret-content {
+        display: none;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+      .love-letter {
+        background: #fff0f3;
+        padding: 20px;
+        border-radius: 15px;
+        border-left: 5px solid #ff4d6d;
+        text-align: left;
+        font-size: 1.05rem;
+        color: #4a4a4a;
+        line-height: 1.6;
+        margin-top: 20px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+      }
+      .love-letter p {
+        margin-bottom: 15px;
+      }
+
+      /* Trình phát nhạc mini lãng mạn quay trở lại giao diện gốc */
+      .music-player {
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #ffe5ec;
+        padding: 10px 20px;
+        border-radius: 50px;
+        display: inline-flex;
+        cursor: pointer;
+        color: #ff4d6d;
+        font-weight: bold;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 10px rgba(255, 77, 109, 0.1);
+        transition: all 0.2s;
+      }
+      .music-player:hover {
+        background: #ffb3c6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container" id="card">
+      <div id="giftIntro">
+        <h1>Kim Hà ơi!</h1>
+        <p class="subtitle">Anh có một điều nhỏ này muốn gửi tới em...</p>
+        <button class="gift-box-btn" onclick="openGift()">
+          <i class="fas fa-gift"></i>
+        </button>
+        <p style="color: #ff758f; font-size: 0.9rem; margin-top: 15px">
+          (Hãy bấm vào hộp quà nhé)
+        </p>
+      </div>
+
+      <div class="secret-content" id="giftContent">
+        <h1>Gửi Kim Hà ❤️</h1>
+
+        <div class="love-letter">
+          <p>Chào cô gái tuyệt vời của anh,</p>
+          <p>
+            Trang web nhỏ này được viết riêng dành tặng cho em, chỉ để nhắc em
+            nhớ rằng em luôn là điều ngọt ngào nhất trong cuộc sống của anh.
+          </p>
+          <p>
+            Xin lỗi bé iu vì hôm qua hông nghe lời em ạ, còn cãi nhau với em làm
+            em khóc em buồn tối ngủ chắc trễ nên nay mới buồn ngủ. Anh hứa sẽ cố
+            gắng nghe lời em hơn, không làm em buồn nữa đâu. Nên là tha lỗi cho
+            anh nhé, vì bé anh xứng đáng được yêu thương và chiều chuộng nhất
+            trên đời mà phải hông nè hehe!
+          </p>
+          <p
+            style="
+              text-align: right;
+              font-weight: bold;
+              font-family: &quot;Dancing Script&quot;, cursive;
+              font-size: 1.8rem;
+              color: #ff4d6d;
+            "
+          >
+            Yêu em nhiều!
+          </p>
+        </div>
+
+        <div class="music-player" onclick="toggleMusic()">
+          <i class="fas fa-music" id="musicIcon"></i>
+          <span id="musicText">Bật nhạc lãng mạn</span>
+        </div>
+
+        <audio id="loveAudio" loop src="nhac.mp3"></audio>
+      </div>
+    </div>
+
+    <script>
+      // Tạo trái tim bay
+      function createHeart() {
+        const heart = document.createElement("i");
+        heart.classList.add("fas", "fa-heart", "heart-particle");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+        heart.style.fontSize = Math.random() * 15 + 10 + "px";
+        const colors = ["#ff4d6d", "#ff758f", "#ff85a1", "#f72585"];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+      setInterval(createHeart, 300);
+
+      // Hàm mở hộp quà và kích hoạt nhạc ngay lập tức
+      function openGift() {
+        const intro = document.getElementById("giftIntro");
+        const content = document.getElementById("giftContent");
+        intro.style.display = "none";
+        content.style.display = "block";
+        setTimeout(() => {
+          content.style.opacity = "1";
+          toggleMusic(); // Tự động phát nhạc lúc mở quà
+        }, 50);
+      }
+
+      // Hàm kiểm soát Bật/Tắt nhạc mượt mà
+      function toggleMusic() {
+        const audio = document.getElementById("loveAudio");
+        const icon = document.getElementById("musicIcon");
+        const text = document.getElementById("musicText");
+
+        if (audio.paused) {
+          audio
+            .play()
+            .then(() => {
+              icon.className = "fas fa-pause";
+              text.innerText = "Đang phát: Điên Cuồng Vì Yêu...";
+            })
+            .catch((err) => {
+              console.log(
+                "Trình duyệt yêu cầu hành động click của user: ",
+                err,
+              );
+              text.innerText = "Bấm vào đây để bật nhạc nè!";
+            });
+        } else {
+          audio.pause();
+          icon.className = "fas fa-music";
+          text.innerText = "Bật nhạc lãng mạn";
+        }
+      }
+    </script>
+  </body>
+</html>
